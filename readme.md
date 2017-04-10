@@ -9,7 +9,9 @@ ssh -i "instacekey.pem" bitnami@34.214.12.123
 
 ### Remove Bitnami banner ###
 `sudo /opt/bitnami/apps/wordpress/bnconfig --disable_banner 1`
+
 Restart the Web server (apache).
+
 `sudo /opt/bitnami/ctlscript.sh restart apache`
 
 ## HTTPS / SSL running instance ##
@@ -17,14 +19,19 @@ Setup https for your site, it will your improve google ranks too.
 You can get your SSL certificate from godaddy or similar.
 
 Generate .csr from godaddy cert
+
 `openssl req -new -newkey rsa:2048 -nodes -keyout mycooldomain.com.key -out mycooldomain.com.csr`
+
 Will give you 2 files:
+
 mycooldomain.com.key - This is the private key
+
 mycooldomain.com.csr - This is the Certificate Signing Request
 
 Upload the csr file to the signing authority, and they will give you back two files.
 
 `mycooldomain.com.crt` - Your cert
+
 `gd_bundle.crt` - Certificate Chain
 
 Generate a .pem file, using the mycooldomain.com.key (created without a password)
