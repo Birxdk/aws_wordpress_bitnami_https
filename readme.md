@@ -1,4 +1,4 @@
-#Setting up Wordpress on AWS using Bitnami image#
+# Setting up Wordpress on AWS using Bitnami image #
 
 Setup new EC2 instance with Wordpres using the Bitnami image.
 
@@ -24,8 +24,8 @@ mycooldomain.com.csr - This is the Certificate Signing Request
 
 Upload the csr file to the signing authority, and they will give you back two files.
 
-mycooldomain.com.crt - Your cert
-gd_bundle.crt - Certificate Chain
+`mycooldomain.com.crt` - Your cert
+`gd_bundle.crt` - Certificate Chain
 
 Generate a .pem file, using the mycooldomain.com.key (created without a password)
 
