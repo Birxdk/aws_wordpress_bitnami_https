@@ -72,3 +72,7 @@ Restart apache
 Route 53, create A (if a use alias) or CNAME and point it to the ELB dns name
 
 If you are getting mixed content errors because of some paths to the css/js/images are absolute and starts with http add the plugin "Remove Http" and activate. This will ensure no mixed content.
+
+## Permission to edit files directly on server ##
+Files uploaded from the UI are uploading under the daemon user, to be able to edit them on the server/using SFTP, SSH to server and run:
+`sudo chown -R bitnami:daemon /opt/bitnami/apps/wordpress/htdocs`
