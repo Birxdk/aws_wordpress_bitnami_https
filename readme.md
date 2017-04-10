@@ -63,7 +63,7 @@ Include "/opt/bitnami/apps/wordpress/conf/httpd-app.conf"
 And replace the existing one on the server, path:
 /opt/bitnami/apps/wordpress/conf
 
-`X-Forwarded-Proto` is a header from ELB, which is used to get the protocol.
+`X-Forwarded-Proto` is a header from ELB, which is used to get the protocol. Do not use any http->https plugins in wordpress as it will cause infinite loops as the ELB will not send the requests to the EC2 instance as https, but only add the mentioned header.
 
 Restart apache 
 `sudo /opt/bitnami/ctlscript.sh restart apache`
@@ -76,3 +76,13 @@ If you are getting mixed content errors because of some paths to the css/js/imag
 ## Permission to edit files directly on server ##
 Files uploaded from the UI are uploading under the daemon user, to be able to edit them on the server/using SFTP, SSH to server and run:
 `sudo chown -R bitnami:daemon /opt/bitnami/apps/wordpress/htdocs`
+
+## Mixed content ##
+Pluging to remove the HTTP from all urls and make urls relative
+This plugin is usually enough to have the site working and avoid mixed content errors
+`Remove http` 2.1.0 | By Fact Maven 
+
+If you still see the mixed content errors in admin, try to install the plugin
+`Relative urls` 0.1.5 | By Tunghsiao Liu 
+
+Both plugins works together.
