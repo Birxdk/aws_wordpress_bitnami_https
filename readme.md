@@ -44,6 +44,8 @@ Add your certificate to the AWS Certificate Manager
 Create a new Standard Load Balancer under EC2, and create a https mapping and select your SSL certificate.
 Make sure you point to your EC2 wordpress instance.
 
+Note: If the health check status is `OutOfService`, right click the load balancer -> Edit Health Check and change the Ping Path from `/index.html` -> `/` as `index.html` will throw a 404 and not pass the health check.
+
 ## HTTP -> HTTPS ##
 You want to redirect all http traffinc to https, therefore replace/create a `httpd-prefix.conf`.
 Upload it to the ec2 server to the folder /opt/bitnami/apps/wordpress/conf
